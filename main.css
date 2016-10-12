@@ -1,0 +1,42 @@
+body {
+	background-color:#fafafa;
+	font-family: sans, sans-serif;
+	font-size:1.5em;
+}
+
+#navlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	background-color:#ADD8E6;
+}
+
+#navlist li{
+		display: inline;
+		font-size:25px;
+		padding:20px;
+}
+
+#navlist li a:hover {
+    color: #808080;
+}
+
+#courses{
+	display: none;
+}
+
+#people{
+	display: none;
+}
+
+#news{
+	display: none;
+}
+
+#notices{
+	display: none;
+}
+
+#guest-book{
+	display: none;
+}
