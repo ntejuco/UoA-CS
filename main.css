@@ -19,6 +19,7 @@ body {
 
 #navlist li a:hover {
     color: #808080;
+	cursor: pointer;
 }
 
 #courses{
@@ -26,7 +27,7 @@ body {
 }
 
 #people{
-	display: none;
+	display: none;	
 }
 
 #news{
@@ -39,4 +40,17 @@ body {
 
 #guest-book{
 	display: none;
+}
+
+.coursePoints {
+	margin-left:20px;
+	
+}
+
+.courseTitle {
+	margin:0em;
+}
+
+.courseCode {
+	margin:0em;
 }
