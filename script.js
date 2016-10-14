@@ -81,7 +81,31 @@ function showNews(){
 	xhr.open("GET", uri, true); 
 	xhr.setRequestHeader("Accept", "application/json");
 	xhr.onload = function () { 
-		var newsResponse = JSON.parse(xhr.responseText);
+		var newsJSON = JSON.parse(xhr.responseText);
+		for (var i = 0; i < newsJSON.length-1; i++){
+			var newsBlock = document.createElement('div');
+			newsBlock.className = "newsBlock";
+			
+			var newsLink = document.createElement('a');
+			newsLink.setAttribute('href', newsJSON[i].linkField);
+			newsLink.setAttribute('target', "_blank");
+			var newsTitle = document.createElement('span');
+			newsLink.appendChild(newsTitle);
+			newsBlock.appendChild(newsLink);
+			newsTitle.innerHTML = newsJSON[i].titleField;
+			newsBlock.appendChild(document.createElement('br'));
+			
+			var newsDate = document.createElement('span');
+			newsDate.innerHTML = newsJSON[i].pubDateField + "<br><br>";
+			newsBlock.appendChild(newsDate);
+			
+			var newsDetails = document.createElement('span');
+			newsDetails.innerHTML = newsJSON[i].descriptionField + "<br><br>";
+			newsBlock.appendChild(newsDetails);
+			
+			newsBlock.appendChild(document.createElement('hr'));
+			document.getElementById("news").appendChild(newsBlock);
+		}
 	}
 	xhr.send(null);
 }
@@ -92,6 +116,38 @@ function showNotices(){
 	document.getElementById("news").style.display="none";
 	document.getElementById("notices").style.display="block";
 	document.getElementById("guest-book").style.display="none";
+	var xhr = new XMLHttpRequest(); 
+	var uri = "http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/notices"; 
+	xhr.open("GET", uri, true); 
+	xhr.setRequestHeader("Accept", "application/json");
+	xhr.onload = function () { 
+		var noticesJSON = JSON.parse(xhr.responseText);
+		for (var i = 0; i < noticesJSON.length; i++){
+			var noticesBlock = document.createElement('div');
+			noticesBlock.className = "notciesBlock";
+			
+			var noticesLink = document.createElement('a');
+			noticesLink.setAttribute('href', noticesJSON[i].linkField);
+			noticesLink.setAttribute("target", "_blank");
+			var noticesTitle = document.createElement('span');
+			noticesLink.appendChild(noticesTitle);
+			noticesTitle.innerHTML = noticesJSON[i].titleField;
+			noticesBlock.appendChild(noticesLink);
+			noticesBlock.appendChild(document.createElement('br'));
+			
+			var noticesDate = document.createElement('span');
+			noticesDate.innerHTML = noticesJSON[i].pubDateField + "<br><br>";
+			noticesBlock.appendChild(noticesDate);
+			
+			var noticesDetails = document.createElement('span');
+			noticesDetails.innerHTML = noticesJSON[i].descriptionField + "<br><br>";
+			noticesBlock.appendChild(noticesDetails);
+			noticesBlock.appendChild(document.createElement('hr'));
+			
+			document.getElementById("notices").appendChild(noticesBlock);
+		}
+	}
+	xhr.send(null);
 }
 
 function showGuestBook(){
@@ -179,4 +235,19 @@ function displayPersonPictures(profileUrlArray){
 		}
 		xhr.send(null);
 	}
+}
+
+function postComment(){
+	xhr = new XMLHttpRequest();
+	var name = document.getElementById("commentName").value;
+	var uri = "http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/comment?name=" + name;
+	var comment = document.getElementById("commentDetails").value;
+	var params = '"/comment?name=sad"';
+	xhr.open("POST", uri, true);
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.onload = function () {
+		document.getElementById("commentName").value = "";
+		document.getElementById("commentDetails").value = "";
+	}
+	xhr.send("\"" +comment+ "\""); 
 }

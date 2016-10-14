@@ -34,19 +34,20 @@
 			<br>
 		</section>
 		<section id="news">
-			<center>
-				<br><br><p>This is the news page.</p>
-			</center>
+			<br>
 		</section>
 		<section id="notices">
-			<center>
-				<br><br><p>This is the notices page.</p>
-			</center>
+			<br>
 		</section>
 		<section id="guest-book">
-			<center>
-				<br><br><p>This is the guest-book page.</p>
-			</center>
+			<div class="iframe-container">
+				<iframe class="comments" src="http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/htmlcomments"></iframe>
+			</div>
+			<form action="javascript:postComment()">
+				Comment: <input id="commentDetails" type="text" name="comment"><br>
+				Name: <input id="commentName" type="text" name="name"><br>
+				<input id="submit-button" type="submit" value="Submit">
+			</form>
 		</section>
 	</body>
 </html>
