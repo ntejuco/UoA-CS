@@ -4,10 +4,14 @@ body {
 	font-size:1.5em;
 }
 
+#navbar {
+	#position:fixed;
+}
+
 #navlist {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-bottom:20px;
 	background-color:#ADD8E6;
 }
 
@@ -21,6 +25,7 @@ body {
     color: #808080;
 	cursor: pointer;
 }
+	
 
 #courses{
 	display: none;
@@ -53,4 +58,17 @@ body {
 
 .courseCode {
 	margin:0em;
+}
+
+.personBlock{
+	position:relative;
+}
+
+.top{
+	position: absolute;
+	top:0;
+}
+
+.personPicture{
+	padding-right:50cm;
 }
